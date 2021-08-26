@@ -1,0 +1,176 @@
+/*
+	공통
+*/
+	ul
+	{
+		list-style:none;
+	}
+
+	table
+	{
+		border:1px solid #b3bcbd;
+		width:100%;
+	}
+	
+	table th
+	{
+		text-align:center;
+		border:1px solid #b3bcbd;
+		border-collapse:collapse;
+	}
+	
+	table td
+	{
+		text-align:center;
+		color:#b3bcbd;
+	}
+	
+	table td a
+	{
+		font-weight:bold;
+		color:#b3bcbd;
+		text-decoration:none;
+	}
+	
+	.title
+	{
+		background-color:#34ebc3;
+	}
+	
+	.title span
+	{
+		color:white;
+		font-weight:bold;
+		padding-left:30%;
+	}
+	
+	.pos_button
+	{
+		background-color:#34ebc3;
+		color:white;
+		font-weight:bold;
+		border:1px solid #34ebc3;
+		border-radius:5px;
+	}
+
+/*
+	포지션 카테고리
+*/
+	#pos_type
+	{
+		width:13%; height:20%;
+		margin:2%;
+		border:1px solid #b3bcbd;
+	}
+
+	#pos_type ul li a
+	{
+		text-decoration:none;
+		color:#b3bcbd;
+		font-family:sans-serif;
+		padding-top:10px;
+		display: block;
+	}
+
+/*
+	게시물 정렬
+*/
+	#pos_sort
+	{
+		width:20%; height:8%;
+		margin-left:18%;
+		margin-top:-15%;
+	}
+	
+	#pos_sort ul li
+	{
+		font-family:sans-serif;
+		float:left;
+		font-weight:bold;
+	}
+	
+	#pos_sort ul li a
+	{
+		color:#34ebc3;
+		text-decoration:none;
+	}
+
+/*
+	글쓰기 버튼
+*/
+	#pos_btnWrite
+	{
+		float:right;
+		margin-right:5%;
+	}
+
+/*
+	게시판 목록
+*/
+	#pos_noBoard
+	{
+		margin-top:5%;
+		padding-left:20%;
+		padding-top:1%; padding-bottom:15%;
+	}
+	
+	#pos_boardList
+	{
+		margin-top:5%;
+		padding-left:17%; padding-right:3%;
+		padding-bottom:10%;
+	}
+
+/*
+	게시물 페이징
+*/
+	#pos_paging
+	{
+		padding-left:17%;
+	}
+	
+/*
+	form
+*/
+	form ul
+	{
+		padding-left:30%;
+		padding-top:3%; padding-bottom:3%;
+	}
+	
+	form ul li
+	{
+		margin-bottom:1%;
+	}
+	
+	label
+	{
+		width:150px;
+		font-weight:bold;
+	}
+	
+	textarea
+	{
+		resize:none;
+		width:62%; height:300px;
+	}
+	
+	#pos_title
+	{
+		width:50%;
+	}
+	
+	#pos_type
+	{
+		margin-left:0%;
+	}
+	
+/*
+	게시물 디테일
+*/
+	#pos_boardDetail
+	{
+		border:1px solid black;
+		padding-left:30%;
+		padding-top:3%; padding-bottom:3%;
+	}

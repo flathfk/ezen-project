@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.board.dao.BoardMapper">
+ 
+	<!-- 총 게시글 수-->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM board b
+		JOIN member m
+		ON b.mem_num = m.mem_num
+		<where>
+			<if test="boa_cate != ''">
+			boa_cate = #{boa_cate}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 글 목록 -->
+	<select id="selectList" parameterType="map"
+	                                   resultType="boardVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              b.boa_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(b.boa_title,'<','&lt;'),'>','&gt;') boa_title,
+		              ]]>
+		              m.mem_nick,
+		              b.boa_date,
+		              b.boa_hit,
+		              b.boa_filename,
+		              b.boa_cate,
+		              b.boa_mode
+		              FROM board b JOIN member_detail m ON b.mem_num = m.mem_num 
+		              <where>
+						<if test="boa_cate != ''">
+							b.boa_cate = #{boa_cate}
+						</if>
+					  </where>
+		              ORDER BY b.boa_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="updateBoard" parameterType="boardVO">
+		UPDATE board SET
+			<if test="boa_filename != ''">
+			boa_uploadfile=#{boa_uploadfile},
+			boa_filename=#{boa_filename},
+			</if>	
+			boa_title=#{boa_title},
+			boa_content=#{boa_content},
+			boa_mode=#{boa_mode}
+		WHERE boa_num=#{boa_num}
+	</update>
+ 	
+	<!-- ====== 댓글 ======== 	 -->
+	<select id="selectBoardComment" parameterType="map"
+ 	                     resultType="boardReplyVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT 
+ 		        m.*, 
+ 		        rownum rnum 
+ 		      FROM (SELECT 
+                      *
+                    FROM (SELECT 
+                            bor_num,
+ 		                    bor_content,
+ 		                    TO_CHAR(bor_date,'YYYY-MM-DD HH24:MI:SS') bor_date,
+ 		                    boa_num,
+ 		                    mem_num
+                          FROM board_reply where boa_num=#{boa_num}) r 
+                               JOIN member_detail m
+                               ON r.mem_num = m.mem_num
+                               ORDER BY bor_num DESC)m)
+                              
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
+ 	
+ 	<select id="selectReport" parameterType="integer"
+ 	                          resultType="boardReportVO">
+		SELECT 
+		   b.boa_title,
+		   b.boa_num,
+		   b.boa_cate, 
+		   b.boa_content, 
+		   b.boa_uploadfile, 
+		   b.boa_filename,
+		   b.boa_status, 
+		   r.bop_content, 
+		   r.bop_num, 
+		   r.bop_date,
+		   m.mem_nick 
+		FROM boa_report r 
+		JOIN board b ON r.boa_num=b.boa_num
+		JOIN member_detail m ON r.mem_num=m.mem_num
+		WHERE r.bop_num=#{bop_num}
+	</select>
+ 	
+ 	
+ 	<select id="selectRowreport" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM boa_report r
+		JOIN board b
+		ON r.boa_num = b.boa_num
+	</select>
+ 	
+	<!-- 신고글 목록 -->
+	<select id="reportList" parameterType="map"
+	                                   resultType="boardReportVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              r.bop_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(b.boa_title,'<','&lt;'),'>','&gt;') boa_title,
+		              ]]>
+		              r.bop_date,
+		              m.mem_nick
+		              FROM boa_report r 
+		              JOIN board b ON r.boa_num = b.boa_num 
+		              JOIN member_detail m ON r.mem_num = m.mem_num
+		              ORDER BY r.bop_num DESC)a)
+		              
+		              
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	
+	<!-- ====== 신고 ========  댓글 따라하는 중-->
+	<select id="reportPage" parameterType="map"
+								resultType="boardReportVO">
+	SELECT*FROM (
+			SELECT
+			  m.*,
+			  rownum rnum
+			 FROM (SELECT
+			 		*
+			 	   FROM (SELECT
+			 	   			bop_num,
+			 	   			bop_content,
+			 	   			TO_CHAR(bop_date,'YYYY-MM-DD HH24:MI:SS') bop_date,
+			 	   			boa_num,
+			 	   			mem_num
+			 	   		FROM boa_report where boa_num=#{boa_num}) r
+			 	   		JOIN member_detail m
+			 	   		ON r.mem_num = m.mem_num
+			 	   		ORDER BY bop_num DESC)m)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}]
+		]]>
+	</select>
+
+</mapper>

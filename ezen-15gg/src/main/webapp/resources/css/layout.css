@@ -1,0 +1,240 @@
+@CHARSET "UTF-8";
+
+/*=========레이아웃=========*/
+div#main{
+	width:1024px;
+	margin:0 auto;
+	font-size:10pt;
+	font-family: "맑은 고딕";
+}
+div#main_header{
+	margin-bottom: 10px;
+	padding: 0 10px 0 0;
+}
+div#main_menu{
+	float:left;
+	width:17%;
+	min-height:400px;
+}
+div#main_body{
+	float:left;
+	width:78%;
+	padding:5px 5px 30px 5px;
+}
+div#main_footer{
+	clear:both;
+	width:100%;
+	background-color:yellow;
+}
+
+/*==========메뉴==========*/
+div#main_menu ul{
+	list-style:none;
+}
+
+div#main_menu ul li{
+	margin-bottom:5px; 
+}
+
+/*==========페이지 기본 스타일======*/
+.page-main-style{
+	width:96%;
+	margin:30px auto;
+}
+.one-page{
+	width:600px;
+	margin:0 auto;
+}
+/*==========메시지======*/
+.result-display{
+	width:400px;
+	margin:50px auto;
+	border:1px solid #000;
+	padding:100px 0 100px 0;
+	text-align:center;
+}
+.align-center{
+	text-align:center;
+}
+.align-right{
+	text-align:right;
+}
+.error-color{
+	color:#ff0000;
+}
+/*Mypage*/
+.mypage-div{
+	width:48%;
+	float:left;
+	padding:5px;
+}
+
+/* 게시판 통일 */
+.onew{
+	background-color:#34ebc3;
+}
+
+.div1{
+   width: 100px;
+   height: 50px;
+   border: 1px solid red;
+   border-radius: 10px;
+}
+
+/*목록*/
+.page-main-style form#search_form{
+	border: none;
+}
+.page-main-style ul.search{
+	width:500px;
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+.page-main-style ul.search li{
+	margin:0 0 9px 0;
+	padding:0;
+	display:inline;
+}
+.page-main-style .list-space{
+	width:700px;
+	margin:10px auto;
+}
+.page-main-style table{
+	width:100%;
+	margin:5px auto;
+	border:1px solid #000;
+	border-collapse:collapse;
+}
+.page-main-style table td, table th{
+	border:1px solid #000;
+	padding:5px;
+}
+/*글상세*/
+.detail-img{
+	max-width: 500px;
+}
+div#reply_div{
+	padding:18px 10px 50px 25px;
+	margin-top:10px;
+	margin-left:30px;
+	background-color:#eeeeee;
+	width:670px;
+}
+div#output{
+	padding:5px 10px 40px 10px;
+	margin-top:10px;
+	margin-left:30px;
+}
+#output_fav, .output_rfav{
+	cursor : pointer;
+}
+#output_fcount{
+	width:50px;
+	display:inline-block;
+}
+form#re_form{
+	width:650px;
+	border:none;
+}
+span.re-title{
+	color:#000;
+	font-size:12pt;
+	line-height:200%;
+}
+span.letter-count{
+	font-size:10pt;
+	color:#999;
+}
+span.form-id{
+	padding-left:93px;
+	color:#000;
+}
+textarea.rep-content{
+	width:90%;
+	height:50px;
+	margin:10px 10px;
+}
+div#re_first{
+	float:left;
+	width:70%;
+	padding-left:15px;
+	margin-bottom:10px;
+}
+div#re_second{
+	float:left;
+	width:19%;
+	margin-bottom:10px;
+}
+div#loading{
+	width:100px;
+	margin:0 auto;
+}
+div.paging-button{
+	text-align:right;
+}
+div#output{
+	clear:both;
+}
+form#mre_form{
+	border:none;
+	margin:5px;
+}
+/*등록,수정폼*/
+.page-main-style form{
+	width:500px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+}
+.page-main-style ul{
+	list-style:none;
+}
+.page-main-style label{
+	width:130px;
+	float:left;
+}
+.page-main-style input[type="text"],input[type="password"],input[type="email"]{
+	width:200px;
+}
+.page-main-style #register_form input[id="id"]{
+	width:113px;
+}
+.page-main-style input[id="zipcode"]{
+	width:95px;
+}
+.page-main-style ul.paging-button{
+	overflow:hidden;
+}
+.page-main-style li.paging-num{
+	float:left;
+	list-style:none;
+	padding:10px;
+	cursor:pointer;
+}
+.page-main-style li.paging-current{
+	float:left;
+	list-style:none;
+	padding:10px;
+}
+.page-main-style ul.icon{
+	overflow:hidden;
+}
+.page-main-style ul li.item{
+	float:left;
+	list-style:none;
+	padding:10px;
+}
+.page-main-style a:link{
+	text-decoration: none;
+	color:#666;
+}
+.page-main-style a:hover{
+	text-decoration: underline;
+	color:#000;
+}
+.page-main-style a:visited{
+	text-decoration: none;
+	color:#666;
+}
+  
